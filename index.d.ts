@@ -150,6 +150,11 @@ declare module 'binance-api-node' {
         }
     }
 
+    export interface Price {
+        symbol: string,
+        price: string
+    }
+
     export interface Binance {
         accountInfo(options?: { useServerTime: boolean }): Promise<Account>;
         tradeFee(): Promise<TradeFeeResult>;
@@ -161,6 +166,7 @@ declare module 'binance-api-node' {
         orderTest(options: NewOrder): Promise<Order>;
         ping(): Promise<boolean>;
         prices(): Promise<{ [index: string]: string }>;
+        pricesV3(): Promise<Price[]>;
         avgPrice(options?: { symbol: string }): Promise<AvgPriceResult | AvgPriceResult[]>;
         time(): Promise<number>;
         trades(options: { symbol: string, limit?: number }): Promise<TradeResult[]>;

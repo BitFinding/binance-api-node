@@ -222,6 +222,8 @@ export default opts => {
       publicCall('/v1/ticker/allPrices').then(r =>
         r.reduce((out, cur) => ((out[cur.symbol] = cur.price), out), {}),
       ),
+    pricesV3: () =>
+      publicCall('/v3/ticker/price'),
     
     avgPrice: payload => publicCall('/v3/avgPrice', payload),
 
